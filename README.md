@@ -5,6 +5,12 @@ At the moment, the functionality of this serializer is limited to
 stripping out the "dynamic" part of the JSS-generated class names to avoid false positive
 changes to the snapshot every time the snapshot is re-generated. 
 
+# Install
+
+```bash
+npm install --save-dev jss-snapshot-serializer
+```
+
 # Usage
 
 To use the serializer globally for all your tests
