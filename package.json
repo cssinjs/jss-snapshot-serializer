@@ -1,0 +1,26 @@
+{
+  "name": "jss-snapshot-serializer",
+  "version": "0.1.0",
+  "description": "Jest snapshot serializer for JSS",
+  "main": "src/jss-snapshot-serializer.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cssinjs/jss-snapshot-serializer.git"
+  },
+  "keywords": [
+    "jss",
+    "jest",
+    "snapshot",
+    "test",
+    "css-in-js"
+  ],
+  "author": "Vladimir Guguiev <wizardzloy@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cssinjs/jss-snapshot-serializer/issues"
+  },
+  "homepage": "https://github.com/cssinjs/jss-snapshot-serializer#readme"
+}
