@@ -7,6 +7,7 @@ exports[`react-jss can handle components with nesting 1`] = `
     height: 100px;
     background-color: red;
   }
+
   .blueBox-0-2-2 {
     width: 100px;
     height: 100px;
@@ -39,6 +40,7 @@ exports[`react-jss can handle components with several styles 1`] = `
     height: 100px;
     background-color: red;
   }
+
   .blueBox-0-2-2 {
     width: 100px;
     height: 100px;

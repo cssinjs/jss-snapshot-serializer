@@ -18,7 +18,10 @@ type MarkedElement = Element & {
 };
 
 const indent = (str: string, indentation: string) =>
-  str.split('\n').join(`\n${indentation}`);
+  str
+    .split('\n')
+    .join(`\n${indentation}`)
+    .replace(/\n\s+\n/g, '\n\n');
 
 const getNodes = (node: Element, nodes: Element[] = []) => {
   if (typeof node === 'object') {
@@ -56,7 +59,7 @@ const getStylesByClassNames = (classNames: string[]) =>
       return [...rules, ...newRules];
     }, [] as Rule[])
     .map((stylesheet) => stylesheet.toString())
-    .join('\n');
+    .join('\n\n');
 
 const plugin: SnapshotSerializerPlugin = {
   test(val: any) {
