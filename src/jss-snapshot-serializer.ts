@@ -68,7 +68,10 @@ const replaceClassNames = (
 ) => {
   let result = str;
   for (const [oldClassName, newClassName] of Object.entries(classNameMapping)) {
-    result = result.replace(new RegExp(oldClassName, 'g'), newClassName);
+    result = result.replace(
+      new RegExp(`${oldClassName}([ "']+)`, 'g'),
+      `${newClassName}$1`
+    );
   }
 
   return result;
