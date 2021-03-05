@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`styled-jss removes non-deterministic class names 1`] = `
+<DocumentFragment>
+  <div
+    class="div-1-0-1-1"
+  />
+</DocumentFragment>
+`;

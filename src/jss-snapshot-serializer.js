@@ -10,15 +10,16 @@ const collectElements = (element, elements = []) => {
   elements.push(element);
 
   if (element.children) {
-    element.children.forEach(child => collectElements(child, elements));
+    element.children.forEach((child) => collectElements(child, elements));
   }
 
   return elements;
 };
 
-const markElements = nodes => nodes.forEach((element) => {
-  element[MARKER] = true;
-});
+const markElements = (nodes) =>
+  nodes.forEach((element) => {
+    element[MARKER] = true;
+  });
 
 const replaceJssClassNames = (elements) => {
   elements.forEach((element) => {
@@ -40,7 +41,10 @@ const replaceJssClassNames = (elements) => {
         if (!jssClassNameRegexp.test(className)) return className;
 
         const lastDashPosition = className.lastIndexOf('-');
-        const secondLastDashPosition = className.lastIndexOf('-', lastDashPosition - 1);
+        const secondLastDashPosition = className.lastIndexOf(
+          '-',
+          lastDashPosition - 1
+        );
 
         return className.substring(0, secondLastDashPosition);
       });
@@ -49,11 +53,14 @@ const replaceJssClassNames = (elements) => {
   });
 };
 
-
 module.exports = {
   test(value) {
     // apply the serializer only to react elements that we haven't marked(processed) before
-    return value && !value[MARKER] && value.$$typeof === Symbol.for('react.test.json');
+    return (
+      value &&
+      !value[MARKER] &&
+      value.$$typeof === Symbol.for('react.test.json')
+    );
   },
 
   print(value, serialize) {
