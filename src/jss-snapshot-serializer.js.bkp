@@ -3,14 +3,14 @@ const MARKER = '__jss-snapshot-serializer-marker__';
 const jssClassNameRegexp = /([a-zA-Z0-9]*)-([a-zA-Z0-9]*)-([0-9]*)-([0-9]*)/;
 
 const collectElements = (element, elements = []) => {
-  if (typeof element !== 'object') {
-    return elements;
+  if (typeof element === 'object') {
+    elements.push(element);
   }
 
-  elements.push(element);
-
   if (element.children) {
-    element.children.forEach((child) => collectElements(child, elements));
+    Array.from(element.children).forEach((child) =>
+      collectElements(child, elements)
+    );
   }
 
   return elements;
@@ -56,14 +56,16 @@ const replaceJssClassNames = (elements) => {
 module.exports = {
   test(value) {
     // apply the serializer only to react elements that we haven't marked(processed) before
+    console.log(value);
     return (
       value &&
       !value[MARKER] &&
-      value.$$typeof === Symbol.for('react.test.json')
+      (value.$$typeof === Symbol.for('react.test.json') ||
+        (global.Element && value instanceof global.Element))
     );
   },
 
-  print(value, serialize) {
+  serialize(value, config, indentation, depth, refs, printer) {
     // collect all react element nodes in the tree of the value
     const elements = collectElements(value);
 
@@ -74,6 +76,6 @@ module.exports = {
     // to keep the snapshots repeatable
     replaceJssClassNames(elements);
 
-    return serialize(value);
+    return printer(value, config, indentation, depth, refs);
   },
 };

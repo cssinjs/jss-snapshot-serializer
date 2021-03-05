@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "outDir": "dist",
+    "jsx": "react-jsx",
+    "esModuleInterop": true
+  },
+  "include": ["src/**.ts"],
+}

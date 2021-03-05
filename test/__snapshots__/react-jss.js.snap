@@ -1,9 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`react-jss removes non-deterministic class names 1`] = `
-<DocumentFragment>
-  <div
-    class="redBox-0-2-1"
-  />
-</DocumentFragment>
-`;

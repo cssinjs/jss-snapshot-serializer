@@ -1,0 +1,94 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`react-jss can handle components with nesting 1`] = `
+<DocumentFragment>
+  .redBox-0-2-1 {
+    width: 100px;
+    height: 100px;
+    background-color: red;
+  }
+  .blueBox-0-2-2 {
+    width: 100px;
+    height: 100px;
+    background-color: blue;
+  }
+
+  <div>
+    <div
+      class="redBox-0-2-1"
+    />
+    <div>
+      <div
+        class="redBox-0-2-1"
+      />
+      <div
+        class="blueBox-0-2-2"
+      />
+      <div
+        class="blueBox-0-2-2"
+      />
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`react-jss can handle components with several styles 1`] = `
+<DocumentFragment>
+  .redBox-0-2-1 {
+    width: 100px;
+    height: 100px;
+    background-color: red;
+  }
+  .blueBox-0-2-2 {
+    width: 100px;
+    height: 100px;
+    background-color: blue;
+  }
+
+  <div>
+    <div
+      class="redBox-0-2-1"
+    />
+    <div
+      class="blueBox-0-2-2"
+    />
+  </div>
+</DocumentFragment>
+`;
+
+exports[`react-jss can handle fragments 1`] = `
+<DocumentFragment>
+  .redBox-0-2-1 {
+    width: 100px;
+    height: 100px;
+    background-color: red;
+  }
+
+  <div
+    class="redBox-0-2-1"
+  />
+  .blueBox-0-2-2 {
+    width: 100px;
+    height: 100px;
+    background-color: blue;
+  }
+
+  <div
+    class="blueBox-0-2-2"
+  />
+</DocumentFragment>
+`;
+
+exports[`react-jss removes non-deterministic class names 1`] = `
+<DocumentFragment>
+  .redBox-0-2-1 {
+    width: 100px;
+    height: 100px;
+    background-color: red;
+  }
+
+  <div
+    class="redBox-0-2-1"
+  />
+</DocumentFragment>
+`;
