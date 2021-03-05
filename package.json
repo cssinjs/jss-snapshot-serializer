@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Jest snapshot serializer for JSS",
   "main": "dist/jss-snapshot-serializer.js",
+  "types": "dist/jss-snapshot-serializer.d.ts",
   "scripts": {
     "test": "jest",
     "build": "tsc"
