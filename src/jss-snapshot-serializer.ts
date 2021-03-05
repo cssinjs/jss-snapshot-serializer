@@ -17,6 +17,9 @@ type MarkedElement = Element & {
   [KEY]?: boolean;
 };
 
+const indent = (str: string, indentation: string) =>
+  str.split('\n').join(`\n${indentation}`);
+
 const getNodes = (node: Element, nodes: Element[] = []) => {
   if (typeof node === 'object') {
     nodes.push(node);
@@ -71,9 +74,10 @@ const plugin: SnapshotSerializerPlugin = {
 
     const classNames = getClassNames(nodes);
 
-    const style = getStylesByClassNames(Array.from(classNames))
-      .split('\n')
-      .join(`\n${indentation}`);
+    const style = indent(
+      getStylesByClassNames(Array.from(classNames)),
+      indentation
+    );
 
     const code = printer(value, config, indentation, depth, refs);
 
