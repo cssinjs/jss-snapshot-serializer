@@ -33,16 +33,6 @@ const BlueAndRed = () => {
   );
 };
 
-const BlueAndRedFragment = () => {
-  const classes = useStyles();
-  return (
-    <>
-      <div className={classes.redBox} />
-      <div className={classes.blueBox} />
-    </>
-  );
-};
-
 const BlueAndRedNesting = () => {
   const classes = useStyles();
   return (
@@ -67,11 +57,6 @@ describe('react-jss', () => {
 
   it('can handle components with several styles', () => {
     const blueRed = render(<BlueAndRed />).asFragment();
-    expect(blueRed).toMatchSnapshot();
-  });
-
-  it('can handle fragments', () => {
-    const blueRed = render(<BlueAndRedFragment />).asFragment();
     expect(blueRed).toMatchSnapshot();
   });
 

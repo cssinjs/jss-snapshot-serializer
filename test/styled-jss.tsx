@@ -25,13 +25,6 @@ const BlueAndRed = () => (
   </div>
 );
 
-const BlueAndRedFragment = () => (
-  <>
-    <RedBox />
-    <BlueBox />
-  </>
-);
-
 const BlueAndRedNesting = () => (
   <div>
     <RedBox />
@@ -53,11 +46,6 @@ describe('styled-jss', () => {
 
   it('can handle components with several styles', () => {
     const blueRed = render(<BlueAndRed />).asFragment();
-    expect(blueRed).toMatchSnapshot();
-  });
-
-  it('can handle fragments', () => {
-    const blueRed = render(<BlueAndRedFragment />).asFragment();
     expect(blueRed).toMatchSnapshot();
   });
 

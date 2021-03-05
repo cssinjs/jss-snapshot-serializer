@@ -2,13 +2,13 @@
 
 exports[`react-jss can handle components with nesting 1`] = `
 <DocumentFragment>
-  .redBox-0-2-1 {
+  .j0 {
     width: 100px;
     height: 100px;
     background-color: red;
   }
 
-  .blueBox-0-2-2 {
+  .j1 {
     width: 100px;
     height: 100px;
     background-color: blue;
@@ -16,17 +16,17 @@ exports[`react-jss can handle components with nesting 1`] = `
 
   <div>
     <div
-      class="redBox-0-2-1"
+      class="j0"
     />
     <div>
       <div
-        class="redBox-0-2-1"
+        class="j0"
       />
       <div
-        class="blueBox-0-2-2"
+        class="j1"
       />
       <div
-        class="blueBox-0-2-2"
+        class="j1"
       />
     </div>
   </div>
@@ -35,13 +35,13 @@ exports[`react-jss can handle components with nesting 1`] = `
 
 exports[`react-jss can handle components with several styles 1`] = `
 <DocumentFragment>
-  .redBox-0-2-1 {
+  .j0 {
     width: 100px;
     height: 100px;
     background-color: red;
   }
 
-  .blueBox-0-2-2 {
+  .j1 {
     width: 100px;
     height: 100px;
     background-color: blue;
@@ -49,48 +49,25 @@ exports[`react-jss can handle components with several styles 1`] = `
 
   <div>
     <div
-      class="redBox-0-2-1"
+      class="j0"
     />
     <div
-      class="blueBox-0-2-2"
+      class="j1"
     />
   </div>
 </DocumentFragment>
 `;
 
-exports[`react-jss can handle fragments 1`] = `
-<DocumentFragment>
-  .redBox-0-2-1 {
-    width: 100px;
-    height: 100px;
-    background-color: red;
-  }
-
-  <div
-    class="redBox-0-2-1"
-  />
-  .blueBox-0-2-2 {
-    width: 100px;
-    height: 100px;
-    background-color: blue;
-  }
-
-  <div
-    class="blueBox-0-2-2"
-  />
-</DocumentFragment>
-`;
-
 exports[`react-jss removes non-deterministic class names 1`] = `
 <DocumentFragment>
-  .redBox-0-2-1 {
+  .j0 {
     width: 100px;
     height: 100px;
     background-color: red;
   }
 
   <div
-    class="redBox-0-2-1"
+    class="j0"
   />
 </DocumentFragment>
 `;

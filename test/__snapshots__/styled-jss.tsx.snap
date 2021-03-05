@@ -2,13 +2,13 @@
 
 exports[`styled-jss can handle components with nesting 1`] = `
 <DocumentFragment>
-  .div-1-0-1-1 {
+  .j0 {
     width: 100px;
     height: 100px;
     background-color: red;
   }
 
-  .div-2-0-1-2 {
+  .j1 {
     width: 100px;
     height: 100px;
     background-color: blue;
@@ -16,17 +16,17 @@ exports[`styled-jss can handle components with nesting 1`] = `
 
   <div>
     <div
-      class="div-1-0-1-1"
+      class="j0"
     />
     <div>
       <div
-        class="div-1-0-1-1"
+        class="j0"
       />
       <div
-        class="div-2-0-1-2"
+        class="j1"
       />
       <div
-        class="div-2-0-1-2"
+        class="j1"
       />
     </div>
   </div>
@@ -35,13 +35,13 @@ exports[`styled-jss can handle components with nesting 1`] = `
 
 exports[`styled-jss can handle components with several styles 1`] = `
 <DocumentFragment>
-  .div-1-0-1-1 {
+  .j0 {
     width: 100px;
     height: 100px;
     background-color: red;
   }
 
-  .div-2-0-1-2 {
+  .j1 {
     width: 100px;
     height: 100px;
     background-color: blue;
@@ -49,48 +49,25 @@ exports[`styled-jss can handle components with several styles 1`] = `
 
   <div>
     <div
-      class="div-1-0-1-1"
+      class="j0"
     />
     <div
-      class="div-2-0-1-2"
+      class="j1"
     />
   </div>
 </DocumentFragment>
 `;
 
-exports[`styled-jss can handle fragments 1`] = `
-<DocumentFragment>
-  .div-1-0-1-1 {
-    width: 100px;
-    height: 100px;
-    background-color: red;
-  }
-
-  <div
-    class="div-1-0-1-1"
-  />
-  .div-2-0-1-2 {
-    width: 100px;
-    height: 100px;
-    background-color: blue;
-  }
-
-  <div
-    class="div-2-0-1-2"
-  />
-</DocumentFragment>
-`;
-
 exports[`styled-jss removes non-deterministic class names 1`] = `
 <DocumentFragment>
-  .div-1-0-1-1 {
+  .j0 {
     width: 100px;
     height: 100px;
     background-color: red;
   }
 
   <div
-    class="div-1-0-1-1"
+    class="j0"
   />
 </DocumentFragment>
 `;

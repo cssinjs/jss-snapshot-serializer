@@ -41,13 +41,15 @@ const markNodes = (nodes: MarkedElement[]) =>
 const getClassNamesFromDOM = (node: Element) => Array.from(node.classList);
 
 const getClassNames = (nodes: Element[]) =>
-  nodes.reduce((classNames, node) => {
-    let newClassNames = getClassNamesFromDOM(node);
+  Array.from(
+    nodes.reduce((classNames, node) => {
+      let newClassNames = getClassNamesFromDOM(node);
 
-    newClassNames.forEach((className) => classNames.add(className));
+      newClassNames.forEach((className) => classNames.add(className));
 
-    return classNames;
-  }, new Set<string>());
+      return classNames;
+    }, new Set<string>())
+  );
 
 const getStylesByClassNames = (classNames: string[]) =>
   (sheet ? [...sheets.registry, sheet] : sheets.registry)
@@ -60,6 +62,24 @@ const getStylesByClassNames = (classNames: string[]) =>
     }, [] as Rule[])
     .map((stylesheet) => stylesheet.toString())
     .join('\n\n');
+
+const filterClassNames = (classNames: string[]) =>
+  classNames.filter((className) =>
+    (sheet ? [...sheets.registry, sheet] : sheets.registry).some((sheet) =>
+      Object.values(sheet.classes).includes(className)
+    )
+  );
+
+const generateClassNameMapping = (classNames: string[]) => {
+  let mapping: Record<string, string> = {};
+  let index = 0;
+  for (const className of classNames) {
+    mapping[className] = `j${index}`;
+    index += 1;
+  }
+
+  return mapping;
+};
 
 const plugin: SnapshotSerializerPlugin = {
   test(val: any) {
@@ -77,14 +97,20 @@ const plugin: SnapshotSerializerPlugin = {
 
     const classNames = getClassNames(nodes);
 
-    const style = indent(
-      getStylesByClassNames(Array.from(classNames)),
-      indentation
-    );
+    const style = indent(getStylesByClassNames(classNames), indentation);
 
     const code = printer(value, config, indentation, depth, refs);
 
     let result = `${style}${style ? '\n\n' + indentation : ''}${code}`;
+
+    const filteredClassNames = filterClassNames(classNames);
+    const classNameMapping = generateClassNameMapping(filteredClassNames);
+
+    for (const [oldClassName, newClassName] of Object.entries(
+      classNameMapping
+    )) {
+      result = result.replace(new RegExp(oldClassName, 'g'), newClassName);
+    }
 
     return result;
   },
