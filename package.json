@@ -2,7 +2,7 @@
   "name": "jss-snapshot-serializer",
   "version": "1.0.0",
   "description": "Jest snapshot serializer for JSS",
-  "main": "src/jss-snapshot-serializer.js",
+  "main": "dist/jss-snapshot-serializer.js",
   "scripts": {
     "test": "jest",
     "build": "tsc"
@@ -17,6 +17,9 @@
     "snapshot",
     "test",
     "css-in-js"
+  ],
+  "files": [
+    "dist"
   ],
   "author": "Vladimir Guguiev <wizardzloy@gmail.com>",
   "license": "MIT",
