@@ -2,6 +2,12 @@
 
 exports[`styled-jss removes non-deterministic class names 1`] = `
 <DocumentFragment>
+  .div-1-0-1-1 {
+    width: 100px;
+    height: 100px;
+    background-color: red;
+  }
+
   <div
     class="div-1-0-1-1"
   />

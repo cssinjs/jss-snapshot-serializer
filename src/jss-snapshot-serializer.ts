@@ -1,4 +1,8 @@
 import { sheets, StyleSheet, Rule } from 'jss';
+// @ts-ignore
+import styled from 'styled-jss';
+
+const sheet: StyleSheet = styled.mountSheet();
 
 const KEY = '__jss-snapshot-serializer-marker__';
 const jssClassNameRegexp = /([a-zA-Z0-9]*)-([a-zA-Z0-9]*)-([0-9]*)-([0-9]*)/;
@@ -38,7 +42,7 @@ const getClassNames = (nodes: Element[]) =>
   }, new Set<string>());
 
 const getStylesByClassNames = (classNames: string[]) =>
-  sheets.registry
+  [...sheets.registry, sheet]
     .reduce((rules, stylesheet) => {
       const newRules = classNames
         .map((className) => stylesheet.getRule('.' + className))
@@ -68,7 +72,7 @@ const plugin: SnapshotSerializerPlugin = {
     const style = getStylesByClassNames(Array.from(classNames))
       .split('\n')
       .join(`\n${indentation}`);
-    // console.log({ classNames, style });
+
     const code = printer(value, config, indentation, depth, refs);
 
     let result = `${style}${style ? '\n\n' + indentation : ''}${code}`;
