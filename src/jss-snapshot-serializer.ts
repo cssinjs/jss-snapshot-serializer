@@ -1,8 +1,10 @@
 import { sheets, StyleSheet, Rule } from 'jss';
-// @ts-ignore
-import styled from 'styled-jss';
 
-const sheet: StyleSheet = styled.mountSheet();
+let sheet: StyleSheet | undefined;
+try {
+  const styled = require('styled-jss').default;
+  sheet = styled.mountSheet();
+} catch {}
 
 const KEY = '__jss-snapshot-serializer-marker__';
 const jssClassNameRegexp = /([a-zA-Z0-9]*)-([a-zA-Z0-9]*)-([0-9]*)-([0-9]*)/;
@@ -42,7 +44,7 @@ const getClassNames = (nodes: Element[]) =>
   }, new Set<string>());
 
 const getStylesByClassNames = (classNames: string[]) =>
-  [...sheets.registry, sheet]
+  (sheet ? [...sheets.registry, sheet] : sheets.registry)
     .reduce((rules, stylesheet) => {
       const newRules = classNames
         .map((className) => stylesheet.getRule('.' + className))
