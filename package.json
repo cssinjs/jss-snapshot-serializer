@@ -4,7 +4,8 @@
   "description": "Jest snapshot serializer for JSS",
   "main": "src/jss-snapshot-serializer.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "build": "tsc"
   },
   "repository": {
     "type": "git",
