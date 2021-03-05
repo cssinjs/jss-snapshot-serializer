@@ -7,7 +7,6 @@ try {
 } catch {}
 
 const KEY = '__jss-snapshot-serializer-marker__';
-const jssClassNameRegexp = /([a-zA-Z0-9]*)-([a-zA-Z0-9]*)-([0-9]*)-([0-9]*)/;
 
 type SnapshotSerializerPlugin = Parameters<
   typeof expect.addSnapshotSerializer
@@ -63,6 +62,18 @@ const getStylesByClassNames = (classNames: string[]) =>
     .map((stylesheet) => stylesheet.toString())
     .join('\n\n');
 
+const replaceClassNames = (
+  str: string,
+  classNameMapping: Record<string, string>
+) => {
+  let result = str;
+  for (const [oldClassName, newClassName] of Object.entries(classNameMapping)) {
+    result = result.replace(new RegExp(oldClassName, 'g'), newClassName);
+  }
+
+  return result;
+};
+
 const filterClassNames = (classNames: string[]) =>
   classNames.filter((className) =>
     (sheet ? [...sheets.registry, sheet] : sheets.registry).some((sheet) =>
@@ -96,21 +107,14 @@ const plugin: SnapshotSerializerPlugin = {
     markNodes(nodes);
 
     const classNames = getClassNames(nodes);
-
     const style = indent(getStylesByClassNames(classNames), indentation);
 
     const code = printer(value, config, indentation, depth, refs);
 
     let result = `${style}${style ? '\n\n' + indentation : ''}${code}`;
-
     const filteredClassNames = filterClassNames(classNames);
     const classNameMapping = generateClassNameMapping(filteredClassNames);
-
-    for (const [oldClassName, newClassName] of Object.entries(
-      classNameMapping
-    )) {
-      result = result.replace(new RegExp(oldClassName, 'g'), newClassName);
-    }
+    result = replaceClassNames(result, classNameMapping);
 
     return result;
   },
