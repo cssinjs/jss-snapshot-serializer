@@ -2,9 +2,11 @@
   "name": "jss-snapshot-serializer",
   "version": "1.0.0",
   "description": "Jest snapshot serializer for JSS",
-  "main": "src/jss-snapshot-serializer.js",
+  "main": "dist/jss-snapshot-serializer.js",
+  "types": "dist/jss-snapshot-serializer.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest",
+    "build": "tsc"
   },
   "repository": {
     "type": "git",
@@ -17,10 +19,28 @@
     "test",
     "css-in-js"
   ],
+  "files": [
+    "dist"
+  ],
   "author": "Vladimir Guguiev <wizardzloy@gmail.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/cssinjs/jss-snapshot-serializer/issues"
   },
-  "homepage": "https://github.com/cssinjs/jss-snapshot-serializer#readme"
+  "homepage": "https://github.com/cssinjs/jss-snapshot-serializer#readme",
+  "devDependencies": {
+    "@babel/preset-env": "^7.13.9",
+    "@babel/preset-react": "^7.12.13",
+    "@testing-library/react": "^11.2.5",
+    "@types/jest": "^26.0.20",
+    "@types/react": "^17.0.2",
+    "babel-jest": "^26.6.3",
+    "jest": "^26.6.3",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-jss": "^10.5.1",
+    "styled-jss": "^2.2.3",
+    "ts-jest": "^26.5.3",
+    "typescript": "^4.2.3"
+  }
 }

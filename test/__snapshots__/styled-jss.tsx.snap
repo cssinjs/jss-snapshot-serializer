@@ -1,0 +1,73 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`styled-jss can handle components with nesting 1`] = `
+<DocumentFragment>
+  .j0 {
+    width: 100px;
+    height: 100px;
+    background-color: red;
+  }
+
+  .j1 {
+    width: 100px;
+    height: 100px;
+    background-color: blue;
+  }
+
+  <div>
+    <div
+      class="j0"
+    />
+    <div>
+      <div
+        class="j0"
+      />
+      <div
+        class="j1"
+      />
+      <div
+        class="j1"
+      />
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`styled-jss can handle components with several styles 1`] = `
+<DocumentFragment>
+  .j0 {
+    width: 100px;
+    height: 100px;
+    background-color: red;
+  }
+
+  .j1 {
+    width: 100px;
+    height: 100px;
+    background-color: blue;
+  }
+
+  <div>
+    <div
+      class="j0"
+    />
+    <div
+      class="j1"
+    />
+  </div>
+</DocumentFragment>
+`;
+
+exports[`styled-jss removes non-deterministic class names 1`] = `
+<DocumentFragment>
+  .j0 {
+    width: 100px;
+    height: 100px;
+    background-color: red;
+  }
+
+  <div
+    class="j0"
+  />
+</DocumentFragment>
+`;
